@@ -1,0 +1,17 @@
+{
+  "name": "api-china-box-pos",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.6"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.10.5",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
+  }
+}
