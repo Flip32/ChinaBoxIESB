@@ -1,24 +1,21 @@
 const express = require('express')
 const router = express.Router()
+const ProdutoController = require('../controllers/ProdutoController')
 
 /* PRODUTOS */
 // Lista todos os produtos
-router.get('/', async (req, res) => {
-
-})
+router.get('/', ProdutoController.index)
 
 // Lista um produto pelo id
-router.get('/:id', async (req, res) => {
-
-})
+router.get('/:id', ProdutoController.indexOne)
 
 // Cadastra um produto novo
-router.post('/', async (req, res) => {
+router.post('/', ProdutoController.store)
 
-})
+// Delete um produto
+router.delete('/:id', ProdutoController.erase)
 
-// Atualiza um produto
-router.patch('/:id', async (req, res) => {
+// Atualiza um ou mais ítens do produto
+router.patch('/:id', ProdutoController.updateOne)
 
-})
 module.exports = router
