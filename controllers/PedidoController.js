@@ -1,7 +1,7 @@
-
+const ControllerDefault = require('../utils/controllerDefault')
 const Pedido = require('../models/pedidos')
 const Yup = require('yup')
-const ControllerDefault = require('../utils/controllerDefault')
+
 
 const validationSchema = Yup.object().shape({
     clienteNome: Yup.string().required(),
