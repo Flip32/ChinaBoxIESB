@@ -23,6 +23,4 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/produtos', produtosRoute)
 app.use('/pedidos', pedidosRoute)
 
-app.listen(port, () => {
-    console.log('Api está ativa')
-})
+app.listen(port, () => console.log('Api está ativa'))
