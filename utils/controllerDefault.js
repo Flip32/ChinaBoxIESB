@@ -1,10 +1,4 @@
-/**
- * @author Grupo Pós IESB (Filipe, Luiz e Natan)
- * Classe default para CRUD 
- * */
-
 const _ = require('underscore')
-
 class ControllerDefault {
 
     constructor(validationSchema, model) {
