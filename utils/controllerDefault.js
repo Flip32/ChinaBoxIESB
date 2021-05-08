@@ -1,5 +1,5 @@
 /**
- * @author Grupo Pós IESB
+ * @author Grupo Pós IESB (Filipe, Luiz e Natan)
  * Classe default para CRUD 
  * */
 

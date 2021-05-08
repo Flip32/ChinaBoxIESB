@@ -1,50 +1,20 @@
+const ControllerDefault = require('../utils/controllerDefault')
 const Produto = require('../models/produtos')
+const Yup = require('yup')
 
-async function store(req, res) {
-    try {
+const validationSchema = Yup.object().shape({
+    nome: Yup.string().required(),
+    preco: Yup.number().required(),
+    descricao: Yup.string().required(),
+    imagem: Yup.string()
+})
 
-    } catch (e) {
+class ProdutoController extends ControllerDefault {
 
+    constructor() {
+        super(validationSchema, Produto)
     }
+
 }
 
-async function index(req, res) {
-    try {
-
-    } catch (e) {
-
-    }
-}
-
-async function indexOne(req, res) {
-    const { id } = req.params
-
-    try {
-
-    } catch (e) {
-
-    }
-}
-
-async function erase(req, res) {
-    const { id } = req.params
-
-    try {
-
-    } catch (e) {
-
-    }
-}
-
-async function updateOne(req, res, next) {
-    const { id } = req.params
-    const body = req.body
-
-    try {
-
-    } catch (e) {
-
-    }
-}
-
-module.exports = { store, index, indexOne, erase, updateOne }
+module.exports = new ProdutoController()
