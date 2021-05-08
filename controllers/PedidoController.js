@@ -11,6 +11,7 @@ const validationSchema = Yup.object().shape({
         subTotal: Yup.number().required()
     }))
 })
+
 class PedidoController extends ControllerDefault {
 
     constructor() {

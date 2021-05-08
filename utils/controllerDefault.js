@@ -19,6 +19,8 @@ class ControllerDefault {
 
     store = async (req, res) => {
 
+        // TODO - Criar um tratamento de erro, ao tentar salvar porduto com o mesmo nome.
+
         if (!(await this.validationSchema.isValid(req.body))) {
             return res.status(400).json({ error: 'Problema na validação dos campos.' })
         }
@@ -73,7 +75,7 @@ class ControllerDefault {
 
     updateOne = async (req, res, next) => {
         const { id } = req.params
-        const body = req.body        
+        const body = req.body
 
         if (_.isEmpty(body)) return res.status(500).send({ error: 'Nenhum dado enviado' })
 
@@ -82,11 +84,16 @@ class ControllerDefault {
 
             if (!registro) return res.status(404).json({ error: 'Registro não encontrato' })
 
+            if(!registro.permiteAlteracao){
+                return res.status(403).json({ error: 'Produto não permite alteração' })
+            }
+
             await this.model.findByIdAndUpdate(id, body, async (err, result) => {
                 if (err)
                     res.status(500).send(err)
                 else {
 
+                    // TODO - Retorar o result em vez de fazer outra chamada ?
                     const registroAtualizado = await this.model.findById(id)
                     res.send(registroAtualizado)
                 }
