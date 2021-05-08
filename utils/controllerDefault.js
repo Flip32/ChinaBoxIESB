@@ -3,6 +3,7 @@
  * Classe default para CRUD 
  * */
 
+const _ = require('underscore')
 
 class ControllerDefault {
 
@@ -39,7 +40,7 @@ class ControllerDefault {
 
 
     indexOne = async (req, res) => {
-        
+
         const { id } = req.params
 
         try {
@@ -57,11 +58,11 @@ class ControllerDefault {
     }
 
     erase = async (req, res) => {
-        
+
         const { id } = req.params
 
         try {
-            
+
             const registro = await this.model.findById(id)
 
             if (!registro) return res.status(404).json({ error: "Registro não encontrado" })
@@ -78,9 +79,29 @@ class ControllerDefault {
 
     updateOne = async (req, res, next) => {
         const { id } = req.params
-        const body = req.body
-    }
+        const body = req.body        
 
+        if (_.isEmpty(body)) return res.status(500).send({ error: 'Nenhum dado enviado' })
+
+        try {
+            const registro = await this.model.findById(id)
+
+            if (!registro) return res.status(404).json({ error: 'Registro não encontrato' })
+
+            await this.model.findByIdAndUpdate(id, body, async (err, result) => {
+                if (err)
+                    res.status(500).send(err)
+                else {
+
+                    const registroAtualizado = await this.model.findById(id)
+                    res.send(registroAtualizado)
+                }
+            })
+        } catch (e) {
+            console.log('Problema ao tentar atualizar o registro. ', e, this.model)
+            return res.status(500)
+        }
+    }
 }
 
 module.exports = ControllerDefault
