@@ -8,6 +8,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.12.6",
+    "swagger-jsdoc": "^7.0.0-rc.6",
     "underscore": "^1.13.1",
     "yup": "^0.32.9"
   },
