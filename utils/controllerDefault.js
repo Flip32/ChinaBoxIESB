@@ -1,9 +1,10 @@
 const _ = require('underscore')
 class ControllerDefault {
 
-    constructor(validationSchema, model) {
+    constructor(validationSchema, model, tipo) {
         this.validationSchema = validationSchema
         this.model = model
+        this.tipo = tipo
     }
 
     index = async (req, res) => {
@@ -19,10 +20,17 @@ class ControllerDefault {
 
     store = async (req, res) => {
 
-        // TODO - Criar um tratamento de erro, ao tentar salvar porduto com o mesmo nome.
-
         if (!(await this.validationSchema.isValid(req.body))) {
             return res.status(400).json({ error: 'Problema na validação dos campos.' })
+        }
+
+        if(this.tipo === 'produto'){
+            const produtoJaExiste = await this.model.find({ nome: req.body.nome })
+
+
+            if(produtoJaExiste && produtoJaExiste.length > 0){
+                return res.status(403).json({ error: 'Produto já existe' })
+            }
         }
 
         try {
@@ -33,7 +41,6 @@ class ControllerDefault {
             return res.status(500)
         }
     }
-
 
     indexOne = async (req, res) => {
 
@@ -73,7 +80,7 @@ class ControllerDefault {
         }
     }
 
-    updateOne = async (req, res, next) => {
+    updateOne = async (req, res) => {
         const { id } = req.params
         const body = req.body
 
@@ -93,9 +100,7 @@ class ControllerDefault {
                     res.status(500).send(err)
                 else {
 
-                    // TODO - Retorar o result em vez de fazer outra chamada ?
-                    const registroAtualizado = await this.model.findById(id)
-                    res.send(registroAtualizado)
+                    res.json(result)
                 }
             })
         } catch (e) {

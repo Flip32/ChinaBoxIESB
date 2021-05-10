@@ -12,7 +12,7 @@ const validationSchema = Yup.object().shape({
 class ProdutoController extends ControllerDefault {
 
     constructor() {
-        super(validationSchema, Produto)
+        super(validationSchema, Produto, 'produto')
     }
 
 }

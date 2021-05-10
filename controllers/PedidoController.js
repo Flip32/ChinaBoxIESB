@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 class PedidoController extends ControllerDefault {
 
     constructor() {
-        super(validationSchema, Pedido)
+        super(validationSchema, Pedido, 'pedido')
     }
 
 }
