@@ -1,0 +1,227 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "ChinaInbox API",
+        "description": "Api desenvolvida para a máteria de BackEnd - IESB - Pós em Especialização de Dispositivos móveis",
+        "version": "1.0.0"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:3333",
+    "basePath": "/",
+    "paths": {
+        "/pedidos": {
+            "get": {
+                "summary": "Listar todos os pedidos",
+                "description": "Listar todos os pedidos",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Pedidos"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Gravar um pedido",
+                "description": "Gravar um pedido",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Objeto do pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Pedidos"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Pedidos"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/pedidos/{id}": {
+            "get": {
+                "summary": "Listar um pedido",
+                "description": "Listar um pedido",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer",
+                            "required": true
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Pedidos"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Excluir um pedido",
+                "description": "Excluir um pedido",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer",
+                            "required": true
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/MessageResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Pedidos": {
+            "type": "object",
+            "properties": {
+                "produtos": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "required": true
+                        },
+                        "qnt": {
+                            "type": "string",
+                            "required": true
+                        },
+                        "subTotal": {
+                            "type": "number",
+                            "required": true
+                        }
+                    }
+                },
+                "clienteNome": {
+                    "type": "string",
+                    "required": true
+                },
+                "ativo": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Produtos": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "required": true
+                },
+                "preco": {
+                    "type": "number",
+                    "required": true
+                },
+                "descricao": {
+                    "type": "string",
+                    "required": true
+                },
+                "imagem": {
+                    "type": "string"
+                },
+                "permiteAlteracao": {
+                    "type": "boolean",
+                    "default": "false"
+                }
+            }
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                }
+            }
+        },
+        "MessageResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
