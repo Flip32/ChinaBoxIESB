@@ -10,9 +10,17 @@
     ],
     "host": "localhost:3333",
     "basePath": "/",
+    "tags": [
+        {
+            "name": "Pedidos"
+        }
+    ],
     "paths": {
         "/pedidos": {
             "get": {
+                "tags": [
+                    "Pedidos"
+                ],
                 "summary": "Listar todos os pedidos",
                 "description": "Listar todos os pedidos",
                 "produces": [
@@ -38,6 +46,9 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Pedidos"
+                ],
                 "summary": "Gravar um pedido",
                 "description": "Gravar um pedido",
                 "produces": [
@@ -84,6 +95,9 @@
         },
         "/pedidos/{id}": {
             "get": {
+                "tags": [
+                    "Pedidos"
+                ],
                 "summary": "Listar um pedido",
                 "description": "Listar um pedido",
                 "produces": [
@@ -118,6 +132,9 @@
                 }
             },
             "delete": {
+                "tags": [
+                    "Pedidos"
+                ],
                 "summary": "Excluir um pedido",
                 "description": "Excluir um pedido",
                 "produces": [
