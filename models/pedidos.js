@@ -4,17 +4,17 @@ const PedidosSchema = new mongoose.Schema(
     {
         produtos: [
             {
-                id: {
-                    type: String,
+                idProduto: {
+                    type: mongoose.Schema.Types.ObjectId, ref: "Produtos",
                     required: true
                 },
                 qnt: {
                     type: String,
                     required: true
                 },
-                subTotal: {
-                    type: Number,
-                    required: true
+                comentario: {
+                    type: String,
+                    required: false
                 }
             }
         ],

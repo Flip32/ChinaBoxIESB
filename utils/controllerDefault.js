@@ -1,4 +1,6 @@
 const _ = require('underscore')
+const Produto = require('../models/produtos')
+
 class ControllerDefault {
 
     constructor(validationSchema, model, tipo) {
@@ -27,9 +29,28 @@ class ControllerDefault {
         if(this.tipo === 'produto'){
             const produtoJaExiste = await this.model.find({ nome: req.body.nome })
 
-
             if(produtoJaExiste && produtoJaExiste.length > 0){
                 return res.status(403).json({ error: 'Produto já existe' })
+            }
+        }
+
+        if(this.tipo === 'pedido'){
+            const { produtos } = req.body
+            let produtosInvalidos = []
+
+            for (const p of produtos) {
+                try{
+                    const haProduto = await Produto.findById(p.idProduto)
+                    if(!haProduto){
+                        produtosInvalidos.push(`id: ${p.idProduto}`)
+                    }
+                } catch (e){
+                    produtosInvalidos.push(`id: ${p.idProduto}`)
+                    console.log('Não encontrou esse produto. Error: ', e)
+                }
+            }
+            if(produtosInvalidos.length > 0) {
+                return res.status(400).json({ error: `Produtos não encontratos: ${produtosInvalidos.toString()}`})
             }
         }
 

@@ -11,9 +11,6 @@ const app = express()
 const port = process.env.PORT || 3330
 const mongoUri = process.env.MONGO_URL
 
-console.log('========================================')
-console.log('mongUri => ', mongoUri)
-
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
