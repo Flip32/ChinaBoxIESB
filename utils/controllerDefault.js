@@ -120,7 +120,17 @@ class ControllerDefault {
                 if (err)
                     return res.status(500).send(err)
                 else {
-                    return res.json(result)
+                    try {
+                        const novoProduto = await this.model.findById(id)
+                        if(!novoProduto){
+                            return res.status(500).send(err)
+                        }
+                        return res.json(novoProduto)
+                    } catch (e) {
+                        console.log('Deu ruim ao tentar achar o produto ', e)
+                        return res.status(500).send(err)
+                    }
+
                 }
             })
         } catch (e) {
