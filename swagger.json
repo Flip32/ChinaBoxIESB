@@ -6,7 +6,7 @@
         "version": "1.0.0"
     },
     "schemes": [
-        "http"
+        "https"
     ],
     "host": "china-box-iesb-v9qpo.ondigitalocean.app",
     "basePath": "/",
