@@ -118,10 +118,9 @@ class ControllerDefault {
 
             await this.model.findByIdAndUpdate(id, body, async (err, result) => {
                 if (err)
-                    res.status(500).send(err)
+                    return res.status(500).send(err)
                 else {
-
-                    res.json(result)
+                    return res.json(result)
                 }
             })
         } catch (e) {
