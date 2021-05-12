@@ -25,4 +25,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/produtos', produtosRoute)
 app.use('/pedidos', pedidosRoute)
 
+app.use(swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.listen(port, () => console.log('Api está ativa'))
