@@ -8,7 +8,7 @@
     "schemes": [
         "http"
     ],
-    "host": "localhost:3333",
+    "host": "china-box-iesb-v9qpo.ondigitalocean.app",
     "basePath": "/",
     "tags": [
         {
