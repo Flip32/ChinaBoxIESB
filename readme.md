@@ -15,15 +15,10 @@
 - MongoDB
 - Mongoose
 - Azure 
-
-<hr>
-
+- Digital Ocean
 ## Demonstração da Aplicação
 
-- <a href="https://chinaboxiesb.azurewebsites.net" >Aplicação em Produção na Azure</a>
-
-<hr>
-
+- <a href="https://chinaboxiesb.azurewebsites.net" >Documentação Swagger</a>
 ## Instruções
 
 - Para baixar o projeto, abra o terminal na pasta onde queira fazer o download e, com o git instalado, execute o comando ``git clone https://github.com/Flip32/ChinaBoxIESB`` .
@@ -37,7 +32,7 @@
 - Abra o Insomnia para visualizar as requisições
 
     - <h2>Produtos</h2> 
-    
+
         - Listar todos os Produtos
             ```
             - GET: /produtos/
