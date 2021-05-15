@@ -31,6 +31,8 @@
 
 - Abra o Insomnia para visualizar as requisições
 
+    - <h3>Base URL: https://chinaboxiesb.azurewebsites.net/</h3> 
+
     - <h2>Produtos</h2> 
 
         - Listar todos os Produtos
