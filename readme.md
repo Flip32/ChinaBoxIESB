@@ -37,10 +37,12 @@
 - Abra o Insomnia para visualizar as requisições
 
     - <h2>Produtos</h2> 
+    
         - Listar todos os Produtos
             ```
-            - GET: /produtos
+            - GET: /produtos/
             ```
+
         - Gravar um Produto
             ```
             - POST: /produtos/
